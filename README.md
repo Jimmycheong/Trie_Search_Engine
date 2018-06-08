@@ -1,2 +1,2 @@
-# Trie_Search_Engine
+# Trie Search Engine
 A search engine using a Trie structure
