@@ -13,11 +13,11 @@ Implemented functions include logic to:
 
 ## How to use 
 
-Install all required packages using pip either locally or in a virtual environment:
+1. Install all required packages using pip either locally or in a virtual environment:
 ```pip install -r requirements```
 
-Run the search.py command: 
-```python main.py <search term>```
+2. Run the search.py command: 
+```python search.py <search term>```
 
 ![screen shot 2018-06-09 at 11 48 46](https://user-images.githubusercontent.com/22529514/41190650-18af5cbe-6bdb-11e8-8a38-bc4b3e0a3b91.jpg)
 
