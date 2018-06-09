@@ -1,7 +1,6 @@
 from typing import List
 from node import Node
 
-
 def look_for_words_beginning_with(node: Node, prefix: str) -> List[str]:
     
     ''' 
@@ -18,26 +17,51 @@ def look_for_words_beginning_with(node: Node, prefix: str) -> List[str]:
 
     original = node
     results = []
-    for char in prefix: 
-        if char in check_children_letters(node):
-            child_index = check_children_letters(node).index(char)
-            node = node.children[child_index]
+
+    for char in prefix:
+        print(f"char: {char}")
+        child_node = find_matching_child_node(node, char)
+        if child_node:
+            node = child_node
+        else: 
+            return results
 
     if node != original:
-        endings_list = look_for_words(node, "")
+        endings_list = look_for_words(node)
         prepended_words = list(map(lambda s: prefix + s, endings_list))
         results += prepended_words
 
     return results
 
-def look_for_words(node: Node, accumulated: str) -> List[str]: 
+def find_matching_child_node(node: Node, char: str) -> Node: 
+
+    '''
+    Finds a child node from the node's list of children that contains the matching search character
+
+
+    Params:
+        node (Node): The node to start searching from
+        char (str): The search character
+
+    Returns: 
+        A node instances containing the letter, otherwise None.
+
+    '''
+
+    child_letters = check_children_letters(node)
+    if char in child_letters:
+        child_index = child_letters.index(char)
+        return node.children[child_index]
+    return None
+
+def look_for_words(node: Node, accumulated: str = "") -> List[str]: 
 
     '''
     Recursive search of all words in a trie structure. Base condition returns if the
     last letter actually creates a word. Continues to recursively search for more words
     if child nodes exist.
 
-        Params:
+    Params:
         node (Node): Any node within a trie structure
         accumulated: A str containing letters gathered from higher parents 
 
@@ -118,32 +142,3 @@ def find_prefix(root, prefix: str):
         node = get_child_node(node, char)
     print("found!")
     return True
-
-# def display_suggestions(root: Node, prefix: str):
-#     '''
-#     Returns a List of suggestions based on a prefix
-    
-
-#     Recursive method. 
-
-#     Base condition: 
-#     - if the node is a word then return the word
-#     - if the node has more children, search through each child
-
-
-#     Logic: 
-#     - append new words to the search_results array
-
-#     '''
-
-#     node = root
-#     suggestions = []
-#     accumulated = ""
-
-#     for i, char in enumerate(prefix):
-#         accumulated += char
-#         if i > 2:
-#             suggestions += look_for_words(node, accumulated)
-
-#     return suggestions
-

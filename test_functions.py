@@ -1,3 +1,9 @@
+'''functions.py 
+
+File containing tests for functions.py
+
+'''
+
 from node import Node
 from functions import (
 	create_root_node, 
@@ -5,13 +11,11 @@ from functions import (
 	find_prefix, 
 	look_for_words, 
 	look_for_words_beginning_with,
+	find_matching_child_node
 	)
 from grappa import should
 
 import pytest
-
-def get_single_child(parent: Node):
-	return parent.children[0]
 
 '''FIXTURES '''
 
@@ -51,6 +55,20 @@ def test_look_for_words_beginning_with(prepopulated_trie):
 	results_3 = look_for_words_beginning_with(root, "dis")
 	sorted(results_3) | should.be.equal.to([])
 
+def test_find_matching_child_node(prepopulated_trie):
+
+	root = prepopulated_trie
+
+	found_node = find_matching_child_node(root, "a")
+	missing_node = find_matching_child_node(root, "x")
+
+	# Happy path 
+	found_node.letter | should.be.equal.to("a")
+	isinstance(found_node, Node) == True
+
+	# Bad Case
+	missing_node | should.be.equal.to(None)
+
 def test_look_for_words(prepopulated_trie):	
 
 	root = prepopulated_trie
@@ -86,3 +104,8 @@ def test_find_prefix():
 	is_found = find_prefix(root, "ABC")
 
 	is_found | should.be.equal.true
+
+
+'''TEST HELPER FUNCTIONS '''
+def get_single_child(parent: Node):
+	return parent.children[0]
