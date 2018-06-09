@@ -46,3 +46,6 @@ export FLASK_DEBUG=1
 4. Open the browser and head to: http://localhost:5000
 
 Enjoy!
+
+Reading Material: 
+- https://medium.com/basecs/trying-to-understand-tries-3ec6bede0014
