@@ -19,7 +19,6 @@ def look_for_words_beginning_with(node: Node, prefix: str) -> List[str]:
     results = []
 
     for char in prefix:
-        print(f"char: {char}")
         child_node = find_matching_child_node(node, char)
         if child_node:
             node = child_node
