@@ -1,3 +1,9 @@
+'''functions.py 
+
+The following file contains a collection of functions for the trie structure search engine
+
+'''
+
 from typing import List
 from node import Node
 
@@ -56,7 +62,7 @@ def find_matching_child_node(node: Node, char: str) -> Node:
 def look_for_words(node: Node, accumulated: str = "") -> List[str]: 
 
     '''
-    Recursive search of all words in a trie structure. Base condition returns if the
+    Recursively searches for all words in a trie structure. Base condition returns if the
     last letter actually creates a word. Continues to recursively search for more words
     if child nodes exist.
 
