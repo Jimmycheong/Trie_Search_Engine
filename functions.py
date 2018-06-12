@@ -119,9 +119,13 @@ def get_child_node(parent: Node, char: str) -> Node:
 def add_word_to_trie(node: Node, word: str):
 
     '''     
-    TODO: 
-
     Adds a new word to the trie structure
+
+    Args: 
+        list_(List[Node]):
+
+    Returns: 
+        SSOMETHING TODO 
     
     '''
     for char in word: 
